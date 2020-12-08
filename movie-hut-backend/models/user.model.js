@@ -31,44 +31,43 @@ const userSchema = new mongoose.Schema({
 
 // PRE - FUNCTIONS
 // encrypt password before save
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next) {
     
-    const user = this;
-    
-    if(!user.isModified || !user.isNew) { 
-    // don't rehash if it's an old user
-      next();
-    } 
-    
-    else {
-      bcrypt.hash(user.password, saltingRounds)
-        .then((err, hash) => {
-            if (err) {
-                console.log('Error hashing password for user with E-mail ', user.email);
-                next(err);
-              } 
-              
-              else {
-                user.password = hash;
-                next();
-              }
-            }
+    var user = this;
 
-        )
-        .catch((err) => console.error(err));         
+    //console.log(user);
+    
+    if(user.isModified('password'))
+    {
+        bcrypt.genSalt(saltingRounds, function(err, saltingRounds){
+            if(err)return next(err);
+
+            bcrypt.hash(user.password, saltingRounds, function(err,hash){
+                if(err) return next(err);
+                user.password=hash;
+                next();
+            })
+
+        })
     }
-  });
+
+    else
+    {
+        next();
+    }
+  
+});
 
 // method to check is password is same as existing user's
-userSchema.methods.comparepassword = (password, cb) => {
-    bcrypt.compare(password,this.password,function(err,isMatch){
+userSchema.methods.comparepassword = function(password,cb){
+    bcrypt.compare(password, this.password, function(err, isMatch){
         if(err) return cb(next);
-        cb(null, isMatch);
+        cb(null,isMatch);
     });
 }
 
 // generate token
-userSchema.methods.generateToken = function(cb){
+userSchema.methods.generateToken = function(cb) {
     var user = this;
     var token = jwt.sign(user._id.toHexString(), JWT_SECRET);
 
@@ -83,7 +82,7 @@ userSchema.methods.generateToken = function(cb){
 userSchema.statics.findByToken = function(token,cb){
     var user=this;
 
-    jwt.verify(token,confiq.SECRET,function(err,decode){
+    jwt.verify(token, JWT_SECRET, function(err,decode){
         user.findOne({"_id": decode, "token":token},function(err,user){
             if(err) return cb(err);
             cb(null,user);
