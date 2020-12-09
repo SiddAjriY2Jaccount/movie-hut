@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     }  
 });
 
-// PRE - FUNCTIONS
+// PRE - FUNCTION
 // encrypt password before save
 userSchema.pre('save', function(next) {
     

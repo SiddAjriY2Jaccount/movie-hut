@@ -2,6 +2,7 @@
 A MEAN Stack application that allows users to view listings of movies at the respective cinema halls. Users with Admin rights can perform CRUD operations such as add/delete/update movie details etc.
 
 ## Steps to run
+<!-- 
 - To start the backend server, open up a Terminal/Powershell and execute the following commands.
 > ```
 > cd movie-hut-backend
@@ -17,3 +18,17 @@ A MEAN Stack application that allows users to view listings of movies at the res
 > ```
 
 - Open up a browser and navigate to `localhost:3000` (Default for Angular)
+ -->
+- To start the backend server, open up a Terminal/Powershell and execute the following commands.
+> ```
+> cd backend
+> npm install
+> npm start
+> ```
+
+- To start the frontend scripts, open up a Terminal/Powershell and execute the following commands.
+> ```
+> cd frontend
+> npm install
+> ng serve --open
+> ```
