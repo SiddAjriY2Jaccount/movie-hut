@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const saltingRounds = 10;
 const { JWT_SECRET } = require('../keys');
 
@@ -59,7 +59,7 @@ userSchema.pre('save', function(next) {
 });
 
 // method to check if entered password is same as that in database
-userSchema.methods.comparepassword = function(password,cb){
+userSchema.methods.comparepassword = function(password,cb) {
     bcrypt.compare(password, this.password, function(err, isMatch){
         if(err) return cb(next);
         cb(null,isMatch);
@@ -80,21 +80,21 @@ userSchema.methods.generateToken = function(cb) {
 
 // find by token
 userSchema.statics.findByToken = function(token,cb){
-    var user=this;
+    var user = this;
 
     jwt.verify(token, JWT_SECRET, function(err,decode){
-        user.findOne({"_id": decode, "token":token},function(err,user){
+        user.findOne({"_id": decode, "token":token},function(err, user){
             if(err) return cb(err);
             cb(null,user);
         })
     })
 };
 
-//delete token
+// delete token
 userSchema.methods.deleteToken=function(token,cb){
-    var user=this;
+    var user = this;
 
-    user.update({$unset : {token: 1}}, function(err,user) {
+    user.updateOne({$unset : {token: 1}}, function(err,user) {
         if(err) return cb(err);
         cb(null,user);
     })

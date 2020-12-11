@@ -6,11 +6,14 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const { MONGOURI, PORT } = require("./keys");
 
-
+/* 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "https://localhost:8081"
 };
 app.use(cors(corsOptions));
+ */
+
+app.use(cors());
 
 mongoose.connect(MONGOURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
@@ -30,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 // Routes
 app.use('/api', require('./routes/auth'));
+
 
 // simple route
 app.get('/', (req, res) => {
