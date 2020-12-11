@@ -1,0 +1,10 @@
+<!-- nav -->
+<div *ngIf="!user">
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/account/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
+        <a class="nav-item nav-link" routerLink="/account/register" routerLinkActive="active">Register</a>
+    </div>
+</nav>
+<h1> THIS IS THE LANDING PAGE </h1>
+</div>
