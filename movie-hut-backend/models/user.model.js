@@ -58,7 +58,7 @@ userSchema.pre('save', function(next) {
   
 });
 
-// method to check is password is same as existing user's
+// method to check if entered password is same as that in database
 userSchema.methods.comparepassword = function(password,cb){
     bcrypt.compare(password, this.password, function(err, isMatch){
         if(err) return cb(next);
