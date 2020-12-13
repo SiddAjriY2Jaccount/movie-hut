@@ -23,7 +23,7 @@ A MEAN Stack application that allows users to view listings of movies at the res
 > ```
 > cd backend
 > npm install
-> npm start
+> nodemon server
 > ```
 
 - To start the frontend scripts, open up a Terminal/Powershell and execute the following commands.
