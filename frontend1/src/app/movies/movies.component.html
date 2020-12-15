@@ -1,0 +1,17 @@
+<div class="tab-content" id="pills-tabContent" style="margin-top: 50px;">
+    <div class="tab-pane fade show active" id="pills-now" role="tabpanel" aria-labelledby="pills-now-tab">
+        <div class="row">
+            <div class="col-sm-2 layout-fix" *ngFor="let item of movies">
+                <div class="card">
+                <a class="card-block stretched-link" routerLink="/about-movie">
+                    <img class="card-img-top" src={{item.src}} alt={{item.title}}>
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <p class="card-text">{{item.genre}}</p>
+                </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

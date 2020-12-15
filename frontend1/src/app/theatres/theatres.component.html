@@ -1,0 +1,6 @@
+<div class="card" *ngFor="let item of theatres" style="margin: 10px 50px 0px 50px; background: #7d7d7d;">
+    <div class="card-body">
+      <h5 class="card-title" style="color:white;">{{item.title}}</h5>
+      <a routerLink="/about-movie" class="btn btn-secondary" *ngFor="let movie of movies" style="margin-right: 10px; background: #c4c4c4; color:black">{{movie.title}}</a>
+    </div>
+</div>
