@@ -1,4 +1,0 @@
-﻿{
-    "connectionString": "mongodb+srv://sidd:EmwiKHPj0b168J6H@cluster0.9prni.mongodb.net/movie-hut?retryWrites=true&w=majority",
-    "secret": "insert-any-string-here"
-}
