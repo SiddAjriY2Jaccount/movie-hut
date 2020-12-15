@@ -1,0 +1,155 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" routerLink="/">
+            <img src="/assets/logo.PNG" width="110" style="vertical-align: top;">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/" routerLinkActive="active">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"routerLink="/movies" routerLinkActive="active">Movies</a>
+            </li>
+
+            <li class="nav-item" *ngIf="!loggedIn">
+                <a class="nav-link" (click)="show()"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
+            </li>
+
+            <li class="nav-item" *ngIf="!loggedIn">
+                <a class="nav-link" (click)="reg_show()"><i class="fa fa-sign-in" aria-hidden="true"></i>Register</a>
+            </li>
+
+            <li class="nav-item" *ngIf="loggedIn">
+                <a class="nav-link" (click)="onLogout()"><i class="fa fa-sign-in" aria-hidden="true"></i>Logout</a>
+            </li>
+            
+            <!-- 
+            <li class="nav-item">
+                <a class="nav-link"routerLink="#" routerLinkActive="active">Theatres</a>
+            </li> -->
+            
+            <!-- 
+            <li class="nav-item">
+                <a class="nav-link" (click) = "show()"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                Login</a>
+            </li> -->
+
+            <!-- 
+            <li>
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li> -->
+            
+        </ul>
+        <!-- <a class="nav-link" (click) = "show()"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a> -->
+    </div>
+    <alert></alert>
+    </nav>    
+
+    <router-outlet></router-outlet>
+    
+    <!-- Login Modal -->
+    <div [style.display]="showLoginModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" >Login</h4>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f.email.errors }" />
+                            <div *ngIf="loginSubmitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f.password.errors }" />
+                            <div *ngIf="loginSubmitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                            </div>
+                        <!-- <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                        </label>
+                        </div> -->
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        </button>
+            
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div [style.display]="showRegisterModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Register</h4>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': registerSubmitted && reg.name.errors }" />
+                            <div *ngIf="registerSubmitted && reg.name.errors" class="invalid-feedback">
+                                <div *ngIf="reg.name.errors.required">Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': registerSubmitted && reg.email.errors }" />
+                            <div *ngIf="registerSubmitted && reg.email.errors" class="invalid-feedback">
+                                <div *ngIf="reg.email.errors.required">Email is required</div>
+                                <div *ngIf="reg.email.errors.email">Email must be a valid email address</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': registerSubmitted && reg.password.errors }" />
+                            <div *ngIf="registerSubmitted && reg.password.errors" class="invalid-feedback">
+                                <div *ngIf="reg.password.errors.required">Password is required</div>
+                                <div *ngIf="reg.password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                            </div>
+                        <div class="form-group form-check">
+                        <div>
+                            <label class="form-check-label">
+                                <input class="form-check-input" formControlName="role" type="checkbox" name="remember"> Admin?
+                            </label>
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "reg_hide()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
