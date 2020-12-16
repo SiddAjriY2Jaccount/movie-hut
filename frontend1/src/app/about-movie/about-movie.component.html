@@ -17,3 +17,34 @@
     </div>
   </div>
 
+ <div *ngFor="let movie of movies" style="margin:50px 50px 50px 50px">
+    <hr style="margin-top: 50px; margin-bottom: 50px;">
+
+    <!--About-->
+    <h3>About the movie</h3>
+    {{movie.descrip}}
+
+    <hr style="margin-top: 50px; margin-bottom: 50px;">
+
+    <!--Cast-->
+    <h3>Cast</h3>
+    <div class="row">
+      <div class="col-sm-2" *ngFor="let item of cast" style="margin-top: 50px;">
+          <img src="{{item.src}}" class="img-fluid rounded-circle" alt="Cast img" style="height: 100px; width:100px">
+          <h6>{{item.name}}</h6>
+      </div>
+    </div>
+    <hr style="margin-top: 50px; margin-bottom: 50px;">
+
+    <!--Crew-->
+    <h3>Crew</h3>
+    <div class="row">
+      <div class="col-sm-2" *ngFor="let item of crew" style="margin-top: 50px;">
+          <img src="{{item.src}}" class="img-fluid rounded-circle" alt="Cast img" style="height: 100px; width:100px">
+          <h6>{{item.name}}</h6>
+      </div>
+    </div>
+  </div>
+
+
+
