@@ -1,10 +1,11 @@
+ <!-- Carousel -->
  <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselIndicators" data-slide-to="1"></li>
         <li data-target="#carouselIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner"> 
         <a href="#">
             <div class="carousel-item active">
                 <img class="d-block w-100" src="https://images.hdqwalls.com/download/tenet-movie-4k-7x-1920x1080.jpg" alt="First slide">
@@ -20,6 +21,12 @@
                 <img class="d-block w-100" src="https://images.hdqwalls.com/download/tenet-movie-4k-7x-1920x1080.jpg" alt="Third slide">
             </div>
         </a>
+        <!-- 
+        <a href="#" *ngFor="let item of allMovies">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{item.image_url}}" alt="First slide">
+            </div>
+        </a> -->
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -30,7 +37,10 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
 <hr style="margin-top:50px;">
+
+<!-- Now Playing / Coming Soon -->
 <div class="container">
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -46,31 +56,35 @@
         <div class="tab-pane fade show active" id="pills-now" role="tabpanel" aria-labelledby="pills-now-tab">
             <!-- Now Playing Cards -->
             <div class="row">
-                <div class="col-sm-3 layout-fix" *ngFor="let item of movies">
+                <div class="col-sm-3 layout-fix d-flex" *ngFor="let item of allMovies">
                     <div class="card">
-                    <a class="card-block stretched-link" href>
-                        <img class="card-img-top" src={{item.src}} alt={{item.title}}>
-                    <div class="card-body">
-                        <h5 class="card-title">{{item.title}}</h5>
-                        <p class="card-text">{{item.genre}}</p>
-                    </div>
-                    </a>
+                    
+                        <img class="card-img-top" src="{{item.image_url}}" alt="{{item.name}}" (click)="onSelect(item)">
+                        <div class="card-body flex-fill">
+                            <a class="card-block stretched-link" (click)="onSelect(item)"><h5 class="card-title">{{item.name}}</h5></a>
+                            <p class="card-text">Genre: {{item.genre}}</p>
+                            <p class="card-text">Language: {{item.language}}</p>
+                            <!-- <p class="card-text">Cast: {{item.cast}}</p>
+                            <p class="card-text">Director: {{item.director}}</p> -->
+                        </div>
+                    
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Coming Soon cards -->
         <div class="tab-pane fade" id="pills-soon" role="tabpanel" aria-labelledby="pills-soon-tab">
-            <!-- Coming Soon Cards -->
             <div class="row">
-                <div class="col-sm-2 layout-fix" *ngFor="let item of comingSoon">
+                <div class="col-sm-3 layout-fix d-flex" *ngFor="let item of allMovies">
                     <div class="card">
-                    <a class="card-block stretched-link" href>
-                        <img class="card-img-top" src={{item.src}} alt={{item.title}}>
-                    <div class="card-body">
-                        <h5 class="card-title">{{item.title}}</h5>
-                        <p class="card-text">{{item.genre}}</p>
-                    </div>
-                    </a>
+                    
+                        <img class="card-img-top" src="{{item.image_url}}" alt="{{item.name}}">
+                        <div class="card-body flex-fill">
+                            <a class="card-block stretched-link" href><h5 class="card-title">{{item.name}}</h5></a>
+                            <p class="card-text">Language: {{item.language}}</p>
+                            <p class="card-text">Genre: {{item.genre}}</p>
+                        </div>
+                    
                     </div>
                 </div>
             </div>

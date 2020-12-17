@@ -1,1 +1,51 @@
-<p>movies works!</p>
+<div class="container">
+
+    <h3>MovieHut: Curated Collection</h3>
+    <hr>
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" style="margin-right: 5px;">
+          <a class="nav-link btn-dark active" id="pills-now-tab" data-toggle="pill" href="#pills-now" role="tab" aria-controls="pills-now" aria-selected="true">Now Playing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-dark" id="pills-soon-tab" data-toggle="pill" href="#pills-soon" role="tab" aria-controls="pills-soon" aria-selected="false">Coming Soon</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+        <!-- Now Playing Cards -->
+        <div class="tab-pane fade show active" id="pills-now" role="tabpanel" aria-labelledby="pills-now-tab">
+            <div class="row">
+                <div class="col-sm-3 layout-fix d-flex" *ngFor="let item of allMovies">
+                    <div class="card">
+                    
+                        <img class="card-img-top" src="{{item.image_url}}" alt="{{item.name}}" (click)="onSelect(item)">
+                        <div class="card-body flex-fill">
+                            <a class="card-block stretched-link" (click)="onSelect(item)"><h5 class="card-title">{{item.name}}</h5></a>
+                            <p class="card-text">Genre: {{item.genre}}</p>
+                            <p class="card-text">Language: {{item.language}}</p>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Coming Soon cards -->
+        <div class="tab-pane fade" id="pills-soon" role="tabpanel" aria-labelledby="pills-soon-tab">
+            <div class="row">
+                <div class="col-sm-3 layout-fix d-flex" *ngFor="let item of allMovies">
+                    <div class="card">
+                    
+                        <img class="card-img-top" src="{{item.image_url}}" alt="{{item.name}}">
+                        <div class="card-body flex-fill">
+                            <a class="card-block stretched-link" href><h5 class="card-title">{{item.name}}</h5></a>
+                            <p class="card-text">Language: {{item.language}}</p>
+                            <p class="card-text">Genre: {{item.genre}}</p>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

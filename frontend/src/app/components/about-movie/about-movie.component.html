@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card" style="margin-top: 100px;">
+            <a class="card-block stretched-link">
+                <img class="card-img-top" src="{{movieItem.image_url}}" alt="{{movieItem.name}}">
+            </a>
+        </div>
+      </div>
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-6" style="margin-top: 100px;">
+        <h3>{{movieItem.name}}</h3>
+        <h6>{{movieItem.language}}  |  {{movieItem.genre}}  |  (U/A)</h6><br><br>
+        <a routerLink="/booking" class="btn btn-primary btn-lg" style="margin-right: 10px;">Book Tickets</a>
+      </div>
+    </div>
+  </div>
+
+ <div style="margin:50px 50px 50px 50px">
+    <hr style="margin-top: 50px; margin-bottom: 50px;">
+
+    <!--About-->
+    <h3>About the movie</h3>
+    {{movieItem.description}}
+
+    <hr style="margin-top: 50px; margin-bottom: 50px;">
+
+    <!--Cast-->
+    <h3>Cast</h3>
+    <div class="row">
+      <div class="col-sm-2" *ngFor="let item of cast" style="margin-top: 50px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" class="img-fluid rounded-circle" alt="Cast img" style="height: 100px; width:100px">
+          <h6>{{item}}</h6>
+      </div>
+    </div>
+    <hr style="margin-top: 50px; margin-bottom: 50px;">
+
+    <!--Crew-->
+    <h3>Crew</h3>
+    <div class="row">
+      <div class="col-sm-2" style="margin-top: 50px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" class="img-fluid rounded-circle" alt="Cast img" style="height: 100px; width:100px">
+          <h6>{{movieItem.director}}</h6>
+      </div>
+    </div>
+  </div>
+
+
+

@@ -19,7 +19,7 @@ const schema = new Schema({
         required: true 
     },
     seats: { 
-        type: String, 
+        type: Number, 
         required: true 
     },
     seats_available: { 
@@ -28,6 +28,10 @@ const schema = new Schema({
     image_url: { 
         type: String  
     },
+    movies: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Movie'
+     }],
     createdDate: { 
         type: Date, 
         default: Date.now 

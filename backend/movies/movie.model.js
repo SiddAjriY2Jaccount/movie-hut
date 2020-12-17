@@ -8,7 +8,7 @@ const schema = new Schema({
     },
     image_url: { 
         type: String, 
-        //required: true 
+        default: "https://blog.rahulbhutani.com/wp-content/uploads/2020/05/Screenshot-2018-12-16-at-21.06.29.png" 
     },
     language: { 
         type: String, 
@@ -22,6 +22,9 @@ const schema = new Schema({
         type: String, 
         required: true 
     },
+    description: {
+        type: String, 
+     },
     cast: { 
         type: String, 
         required: true 
@@ -34,10 +37,10 @@ const schema = new Schema({
 
 schema.set('toJSON', {
     virtuals: true,
-    versionKey: false,
+    versionKey: false, 
     transform: function (doc, ret) {
         delete ret._id;
-        delete ret.password;
+        //delete ret.password;
     }
 });
 
