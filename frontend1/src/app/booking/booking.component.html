@@ -1,0 +1,38 @@
+<div class="card bg-dark" style="color: white;">
+    <div class="card-body" *ngFor="let movie of movies">
+        <h6 class="card-title">{{movie.title}}</h6>
+        <h6 class="card-text text-muted">{{movie.duration}} | {{movie.genre}} | {{movie.createdDate}}</h6>
+    </div>
+</div>
+<div class="d-flex justify-content-center" style="margin-top:50px;">
+    <form class = 'card p-3 bg-light'>
+        <h6 class="text-center" style="margin-top: 40px;">Select the number of seats</h6>
+        <!--Seat buttons-->
+        <div class="row " style="margin-top:40px;">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1" *ngFor="let item of seats">
+                <button id="seatBtn" type="button" (click)="setNoOfSeats()" class="btn btn-dark btn-circle btn-sm" value="{{item}}">{{item}}</button>
+            </div>
+        </div>
+        <!--Premium/classic/recliner selection-->
+        <div class="row" style="margin-top:40px">
+            <div class="col-sm-4">
+                <button (click)="setSeatType()" class="btn btn-light btn-block">Classic</button>
+                <h6 class="text-center">Rs. 199.00</h6>
+            </div>
+            <div class="col-sm-4">
+                <button (click)="setSeatType()" class="btn btn-light btn-block">Premium</button>
+                <h6 class="text-center">Rs.299.00</h6>
+            </div>
+            <div class="col-sm-4">
+                <button (click)="setSeatType()" class="btn btn-light btn-block">Recliners</button>
+                <h6 class="text-center">Rs.399.00</h6>
+            </div>
+        </div>
+        <!--Book button-->
+        <div style="margin-top: 40px;">
+            <button type="button" (click)="getBill()"class="btn btn-secondary btn-lg btn-block">Book Now</button>
+        </div>
+
+    </form>
+</div>
