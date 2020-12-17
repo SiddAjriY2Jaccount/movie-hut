@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { MovieService } from '../../services/movie.service';
+import { AlertService } from '../../services/alert.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -10,8 +13,13 @@ import * as $ from 'jquery';
 export class HomeComponent implements OnInit {
   movies = [];
   comingSoon = [];
+  allMovies = [];
 
-  constructor(private router: Router) { 
+  constructor( 
+    private router: Router,  
+    private route: ActivatedRoute, 
+    private movieService: MovieService,
+    private alertService: AlertService) { 
     
   }
 
@@ -22,6 +30,8 @@ export class HomeComponent implements OnInit {
   logout() {
     //Log Out Func
   }
+
+
 
   getMovies() {
     this.movies.push(
@@ -46,5 +56,31 @@ export class HomeComponent implements OnInit {
       {title: 'THE MAURITANIAN', src: 'https://www.joblo.com/assets/images/joblo/posters/2020/12/mauratanian-jodie-foster-benedict-cumberbatch-drama_thumb.jpg', genre: 'Drama'},
       {title: 'THE MAURITANIAN', src: 'https://www.joblo.com/assets/images/joblo/posters/2020/12/mauratanian-jodie-foster-benedict-cumberbatch-drama_thumb.jpg', genre: 'Drama'}
     );
+
+    this.movieService.getAll()
+      .subscribe((res: any) => {
+        //console.log(res);
+        for (let obj in res) {
+          if (res.hasOwnProperty(obj)) {
+            let item = res[obj];
+            //console.log(item);
+            this.allMovies.push(item);
+          }
+        }
+        console.log(this.allMovies);
+      });
+
   }
+
+  onSelect(item: any) {
+    let user = localStorage.getItem("user");
+    if (user) {
+      this.router.navigate(['/movies', item.id]);
+    }
+    else {
+      alert("You must Login to proceed!");
+    }
+    
+  }
+
 }

@@ -1,6 +1,9 @@
 ﻿const express = require('express');
 const router = express.Router();
 const movieService = require('./movie.service');
+const db = require('_helpers/db');
+const Movie = db.Movie;
+
 
 // routes
 //router.post('/authenticate', authenticate);
@@ -40,9 +43,22 @@ function getCurrent(req, res, next) {
 }
 
 function getById(req, res, next) {
+/*     console.log(req.params.id);
+    Movie.findById(req.params.id)
+        .then(movie => {
+            if (movie) {
+                res.json(movie);
+            }
+            else {
+                res.status(404);
+            }
+        })
+        .catch(err => next(err)); */
+
     movieService.getById(req.params.id)
         .then(movie => movie ? res.json(movie) : res.sendStatus(404))
         .catch(err => next(err));
+    
 }
 
 function update(req, res, next) {

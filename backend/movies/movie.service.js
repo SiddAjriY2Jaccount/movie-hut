@@ -35,17 +35,19 @@ async function getById(id) {
 }
 
 async function create(movieParam) {
-    // validate
+    // validate 
+    /* 
     if (await Movie.findOne({ email: movieParam.email })) {
         throw 'Email "' + movieParam.email + '" is already taken';
-    }
+    } */
 
     const movie = new Movie(movieParam);
 
     // hash password
+    /* 
     if (movieParam.password) {
         movie.password = bcrypt.hashSync(movieParam.password, 10);
-    }
+    } */
 
     // save movie
     await movie.save();
@@ -54,7 +56,7 @@ async function create(movieParam) {
 async function update(id, movieParam) {
     const movie = await Movie.findById(id);
 
-    // validate
+    /* // validate
     if (!movie) throw 'movie not found';
     if (movie.email !== movieParam.email && await Movie.findOne({ email: movieParam.email })) {
         throw 'Email "' + movieParam.email + '" is already taken';
@@ -64,7 +66,7 @@ async function update(id, movieParam) {
     if (movieParam.password) {
         movieParam.password = bcrypt.hashSync(movieParam.password, 10);
     }
-
+ */
     // copy movieParam properties to movie
     Object.assign(movie, movieParam);
 
