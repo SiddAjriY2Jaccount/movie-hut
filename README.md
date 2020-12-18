@@ -34,4 +34,4 @@ A MEAN Stack application to view and book seats to movies. Functionalities inclu
 > ```
 
 ## Contributors
-[Siddhanth J Ajri](https://github.com/SiddAjriY2Jaccount), [Himani Raghav](https://github.com/himaniraghav3)
+[Siddhanth J Ajri](https://github.com/SiddAjriY2Jaccount) & [Himani Raghav](https://github.com/himaniraghav3)
