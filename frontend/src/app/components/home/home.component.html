@@ -57,7 +57,7 @@
             <!-- Now Playing Cards -->
             <div class="row">
                 <div class="col-sm-3 layout-fix d-flex" *ngFor="let item of allMovies">
-                    <div class="card">
+                    <div class="card" id="change-to-pointer-cursor">
                     
                         <img class="card-img-top" src="{{item.image_url}}" alt="{{item.name}}" (click)="onSelect(item)">
                         <div class="card-body flex-fill">

@@ -12,6 +12,10 @@
   height: 720px !important;
 }
 
+#change-to-pointer-cursor {
+  cursor: pointer;
+}
+
 /* .card {
   border: 1px solid #ccc;
   padding-right: 10px;

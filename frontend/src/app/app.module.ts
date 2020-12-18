@@ -11,6 +11,7 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { HomeComponent } from './components/home/home.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { AboutMovieComponent } from './components/about-movie/about-movie.component';
+import { UserBookingsComponent } from './components/user-bookings/user-bookings.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AboutMovieComponent } from './components/about-movie/about-movie.compon
     MoviesComponent,
     HomeComponent,
     AlertComponent,
-    AboutMovieComponent
+    AboutMovieComponent,
+    UserBookingsComponent
   ],
   imports: [
     BrowserModule,

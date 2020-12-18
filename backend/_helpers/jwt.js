@@ -2,6 +2,7 @@ const expressJwt = require('express-jwt');
 const config = require('config.json');
 const userService = require('../users/user.service');
 const movieService = require('../movies/movie.service');
+const bookingService = require('../bookings/booking.service');
 
 module.exports = jwt;
 

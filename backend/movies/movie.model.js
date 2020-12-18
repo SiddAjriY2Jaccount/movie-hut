@@ -29,6 +29,10 @@ const schema = new Schema({
         type: String, 
         required: true 
     },
+    seats_left: { 
+        type: Number,
+        required: true 
+    },
     createdDate: { 
         type: Date, 
         default: Date.now 

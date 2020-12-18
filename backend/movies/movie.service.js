@@ -54,7 +54,14 @@ async function create(movieParam) {
 }
 
 async function update(id, movieParam) {
+
+    console.log(id);
+    console.log(movieParam);
+    
     const movie = await Movie.findById(id);
+
+    console.log('inside UPDATE');
+    console.log(movie);
 
     /* // validate
     if (!movie) throw 'movie not found';

@@ -1,0 +1,20 @@
+h5 {
+    text-align: center;
+}
+
+.btn-circle.btn-sm { 
+    width: 40px; 
+    height: 40px; 
+    padding: 6px 0px; 
+    border-radius: 20px; 
+    font-size: 11px; 
+    text-align: center; 
+} 
+
+.d-flex justify-content-center {
+    width: 80%; 
+} 
+
+p {
+    text-align: center;
+}
