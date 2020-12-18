@@ -1,5 +1,5 @@
 # movie-hut
-A MEAN Stack application that allows users to view listings of movies at the respective cinema halls. Users with Admin rights can perform CRUD operations such as add/delete/update movie details etc.
+A MEAN Stack application to view and book seats to movies. Functionalities include login/register/logout, view movie list, book seats for specific movies, view all bookings.
 
 ## Steps to run
 <!-- 
@@ -32,3 +32,6 @@ A MEAN Stack application that allows users to view listings of movies at the res
 > npm install
 > ng serve --open
 > ```
+
+## Contributors
+[Siddhanth J Ajri](https://github.com/SiddAjriY2Jaccount) & [Himani Raghav](https://github.com/himaniraghav3)
