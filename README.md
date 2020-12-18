@@ -33,5 +33,13 @@ A MEAN Stack application to view and book seats to movies. Functionalities inclu
 > ng serve --open
 > ```
 
+## Screenshots
+![alt text](https://github.com/SiddAjriY2Jaccount/movie-hut/blob/main/git-img/1.png)
+![alt text](https://github.com/SiddAjriY2Jaccount/movie-hut/blob/main/git-img/2.png)
+![alt text](https://github.com/SiddAjriY2Jaccount/movie-hut/blob/main/git-img/3.png)
+![alt text](https://github.com/SiddAjriY2Jaccount/movie-hut/blob/main/git-img/4.png)
+![alt text](https://github.com/SiddAjriY2Jaccount/movie-hut/blob/main/git-img/5.png)
+![alt text](https://github.com/SiddAjriY2Jaccount/movie-hut/blob/main/git-img/6.png)
+
 ## Contributors
 [Siddhanth J Ajri](https://github.com/SiddAjriY2Jaccount) & [Himani Raghav](https://github.com/himaniraghav3)
